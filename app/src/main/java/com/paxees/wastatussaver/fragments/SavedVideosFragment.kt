@@ -1,17 +1,23 @@
 package com.paxees.wastatussaver.fragments
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.os.Environment
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.paxees.wastatussaver.Adapter.RecyclerViewAdapter
 import com.paxees.wastatussaver.Activities.Dashboard
 import com.paxees.wastatussaver.Models.StatusData
 
 import com.paxees.wastatussaver.R
+import com.paxees.wastatussaver.Utils.Constant
 import kotlinx.android.synthetic.main.fragment_status.*
 import java.io.File
 import java.util.ArrayList
@@ -49,14 +55,24 @@ class SavedVideos : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         init()
     }
-
+    override fun onResume() {
+        super.onResume()
+        val intent = Intent(Constant.SAVE_VIDEO_INTENT)
+        LocalBroadcastManager.getInstance((activity as Dashboard).getApplicationContext()).sendBroadcast(intent)
+    }
     fun init() {
+        LocalBroadcastManager.getInstance((activity as Dashboard).getApplicationContext()).registerReceiver(broadcastReceiver, IntentFilter(
+            Constant.SAVE_VIDEO_INTENT)
+        )
         val layoutManager = GridLayoutManager(activity, 1)
         status_rv.setLayoutManager(layoutManager)
         if (getFilePaths()!!.size == 0) {
             no_data_found_tv.setVisibility(View.VISIBLE)
+            status_rv.setVisibility(View.GONE)
         } else {
-            var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard))
+            no_data_found_tv.setVisibility(View.GONE)
+            status_rv.setVisibility(View.VISIBLE)
+            var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedVideosFragment")
             status_rv.setAdapter(adapter)
             adapter.notifyDataSetChanged()
         }
@@ -64,7 +80,7 @@ class SavedVideos : Fragment() {
 
     fun getFilePaths(): ArrayList<StatusData> {
         val resultIAV: ArrayList<StatusData> = ArrayList<StatusData>()
-        val folder = File(Environment.getExternalStorageDirectory().absolutePath + "/WhatsApp/Media/.Statuses")
+        val folder = File(Environment.getExternalStorageDirectory().absolutePath + "/StatusFolder")
         try {
             val allFiles =
                 folder.listFiles { dir, name ->
@@ -81,5 +97,28 @@ class SavedVideos : Fragment() {
         } catch (e: NullPointerException) {
         }
         return resultIAV
+    }
+    var broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val action = intent.action
+            if (action == Constant.SAVE_VIDEO_INTENT) {
+                if (getFilePaths()!!.size == 0) {
+                    no_data_found_tv.setVisibility(View.VISIBLE)
+                    status_rv.setVisibility(View.GONE)
+                } else {
+                    no_data_found_tv.setVisibility(View.GONE)
+                    status_rv.setVisibility(View.VISIBLE)
+                    var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedVideosFragment")
+                    status_rv.setAdapter(adapter)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        if (broadcastReceiver != null) {
+            LocalBroadcastManager.getInstance(activity as Dashboard).unregisterReceiver(broadcastReceiver)
+        }
     }
 }

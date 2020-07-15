@@ -15,8 +15,6 @@ import com.paxees.wastatussaver.Utils.Utils
 import java.util.*
 
 class SplashScreen : Activity() {
-    var utils: Utils? = null
-    var handler: Handler? = null
     var permissions = arrayOf(
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
         Manifest.permission.READ_EXTERNAL_STORAGE
@@ -54,6 +52,7 @@ class SplashScreen : Activity() {
     fun sendToDashboard() {
         Handler().postDelayed({
             startActivity(Intent(this, Dashboard::class.java))
+            finish()
         }, 2000)
 
     }

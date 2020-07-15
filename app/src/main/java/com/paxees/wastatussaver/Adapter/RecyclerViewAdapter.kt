@@ -14,10 +14,14 @@ import com.paxees.wastatussaver.Utils.Utils
 import kotlinx.android.synthetic.main.adatper_listview.view.*
 import java.io.File
 
-class RecyclerViewAdapter(val items: ArrayList<StatusData>, val context: Context) :
+class RecyclerViewAdapter(val items: ArrayList<StatusData>, val context: Context,fragmentName:String) :
     RecyclerView.Adapter<ViewHolder>() {
+    var fragmentname:String?=null
     override fun getItemCount(): Int {
         return items.size
+    }
+    init {
+        this.fragmentname=fragmentName
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -42,6 +46,7 @@ class RecyclerViewAdapter(val items: ArrayList<StatusData>, val context: Context
         holder?.itemView.setOnClickListener(View.OnClickListener {
             var intent = Intent(context, MediaActivity::class.java)
             intent.putExtra("Media",items.get(position).media)
+            intent.putExtra("fragmentName", this.fragmentname)
             context.startActivity(intent)
         })
     }

@@ -1,16 +1,22 @@
 package com.paxees.wastatussaver.fragments
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.GridLayoutManager
-import com.paxees.wastatussaver.Adapter.RecyclerViewAdapter
 import com.paxees.wastatussaver.Activities.Dashboard
+import com.paxees.wastatussaver.Adapter.RecyclerViewAdapter
 import com.paxees.wastatussaver.Models.StatusData
 import com.paxees.wastatussaver.R
+import com.paxees.wastatussaver.Utils.Constant
 import kotlinx.android.synthetic.main.fragment_status.*
 import java.io.File
 import java.util.*
@@ -18,7 +24,8 @@ import java.util.*
 class StatusFragment : Fragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
@@ -31,17 +38,27 @@ class StatusFragment : Fragment() {
     }
 
     fun init() {
+        LocalBroadcastManager.getInstance((activity as Dashboard).getApplicationContext()).registerReceiver(broadcastReceiver, IntentFilter(Constant.SAVE_STATUS_INTENT))
+
         val layoutManager = GridLayoutManager(activity, 1)
         status_rv.setLayoutManager(layoutManager)
         if (getFilePaths()!!.size == 0) {
             no_data_found_tv.setVisibility(View.VISIBLE)
+            status_rv.setVisibility(View.GONE)
         } else {
-            var adapter = RecyclerViewAdapter(getFilePaths(), (activity as Dashboard))
+            no_data_found_tv.setVisibility(View.GONE)
+            status_rv.setVisibility(View.VISIBLE)
+            var adapter = RecyclerViewAdapter(getFilePaths(), (activity as Dashboard), "StatusesFragment")
             status_rv.setAdapter(adapter)
             adapter.notifyDataSetChanged()
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        val intent = Intent(Constant.SAVE_STATUS_INTENT)
+        LocalBroadcastManager.getInstance((activity as Dashboard).getApplicationContext()).sendBroadcast(intent)
+    }
     fun getFilePaths(): ArrayList<StatusData> {
         val resultIAV: ArrayList<StatusData> = ArrayList<StatusData>()
         val whatsappNormalFolder =
@@ -126,5 +143,30 @@ class StatusFragment : Fragment() {
             }
         }
         return resultIAV
+    }
+
+    var broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val action = intent.action
+            if (action == Constant.SAVE_STATUS_INTENT) {
+                if (getFilePaths()!!.size == 0) {
+                    no_data_found_tv.setVisibility(View.VISIBLE)
+                    status_rv.setVisibility(View.GONE)
+                } else {
+                    no_data_found_tv.setVisibility(View.GONE)
+                    status_rv.setVisibility(View.VISIBLE)
+                    var adapter = RecyclerViewAdapter(getFilePaths(), (activity as Dashboard), "StatusesFragment")
+                    status_rv.setAdapter(adapter)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }
+    }
+
+     override fun onDestroy() {
+        super.onDestroy()
+        if (broadcastReceiver != null) {
+            LocalBroadcastManager.getInstance(activity as Dashboard).unregisterReceiver(broadcastReceiver)
+        }
     }
 }

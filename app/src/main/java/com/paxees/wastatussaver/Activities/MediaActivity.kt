@@ -13,6 +13,9 @@ class MediaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_media)
+        init()
+    }
+    fun init() {
         tabs.setupWithViewPager(view_pager)
         if (intent.hasExtra("Media")) {
             mediaFile = intent.getStringExtra("Media")
@@ -27,9 +30,7 @@ class MediaActivity : AppCompatActivity() {
                 addTabs(view_pager, "Video")
             }
         }
-
     }
-
     private fun addTabs(viewPager: ViewPager, type: String) {
         val adapter = ViewPagerAdapter(getSupportFragmentManager())
         adapter.addFrag(OpenMediaFragment(), type)

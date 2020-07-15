@@ -39,6 +39,7 @@ import java.io.OutputStream
 class OpenMediaFragment : Fragment() {
     var mediaController: MediaController? = null
     var mediaFile: String? = null
+    var fragmentName: String? = null
     // done popup
     var doneDialog: Dialog? = null
 
@@ -74,6 +75,7 @@ class OpenMediaFragment : Fragment() {
             }
         })
     }
+
     fun init() {
         doneDialog = Dialog((activity as MediaActivity))
         mediaController = MediaController(activity)
@@ -90,15 +92,23 @@ class OpenMediaFragment : Fragment() {
             }
         }
     }
+
     fun initializeImageView(mediaFile: String) {
         Glide.with(context).load(mediaFile).into(imageView)
     }
+
     fun getData(): String? {
+        (activity as MediaActivity).intent.getStringExtra("fragmentName").let {
+            if (it.equals("SavedImagesFragment") || it.equals("SavedVideosFragment")) {
+                fileSaveBtn.visibility = View.GONE
+            }
+        }
         if ((activity as MediaActivity).intent.hasExtra("Media")) {
             mediaFile = (activity as MediaActivity).intent.getStringExtra("Media")
         }
         return mediaFile
     }
+
     fun initializePlayer(mediaFile: String) {
         videoView.setVideoURI(Uri.parse(mediaFile))
         videoView.setMediaController(mediaController)
@@ -115,13 +125,16 @@ class OpenMediaFragment : Fragment() {
         mediaController!!.isEnabled = true
         videoView.start()
     }
+
     private fun releasePlayer() {
         videoView.stopPlayback()
     }
+
     override fun onStop() {
         super.onStop()
         releasePlayer();
     }
+
     fun popup(filename: String) {
         val builder =
             AlertDialog.Builder(activity as MediaActivity)
@@ -139,6 +152,7 @@ class OpenMediaFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
     }
+
     fun popup(bitmapAs: Bitmap?, filename: String?) {
         val builder =
             AlertDialog.Builder(activity as MediaActivity)
@@ -156,6 +170,7 @@ class OpenMediaFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
     }
+
     @Keep
     private fun saveVideoToInternalStorage(filePath: String) {
         try {
@@ -197,6 +212,7 @@ class OpenMediaFragment : Fragment() {
             e.printStackTrace()
         }
     }
+
     @Keep
     fun saveeFile(bmp: Bitmap?, path: String?) {
         var path = path
@@ -219,10 +235,12 @@ class OpenMediaFragment : Fragment() {
             //            Toast.makeText(this, "Photo has been saved", Toast.LENGTH_SHORT).show();
             donePopup()
         } catch (e: IOException) {
-            Toast.makeText(activity, "Something went wrong, Try again later", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Something went wrong, Try again later", Toast.LENGTH_SHORT)
+                .show()
             e.printStackTrace()
         }
     }
+
     fun saveInGalleryForVideo(outputFile: String) {
         val content = ContentValues(4)
         content.put(
@@ -238,6 +256,7 @@ class OpenMediaFragment : Fragment() {
         val resolver: ContentResolver = (activity as MediaActivity).getContentResolver()
         resolver.insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, content)
     }
+
     fun saveInGalleryForImage(outputFile: String) {
         val content = ContentValues(4)
         content.put(
@@ -250,6 +269,7 @@ class OpenMediaFragment : Fragment() {
         val resolver: ContentResolver = (activity as MediaActivity).getContentResolver()
         resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, content)
     }
+
     fun donePopup() {
         doneDialog?.setContentView(R.layout.done_popup)
         doneDialog?.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
