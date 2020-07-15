@@ -18,12 +18,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/thumnails_img"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_centerVertical="true"
-                android:src="@mipmap/ic_logo"></de.hdodenhof.circleimageview.CircleImageView>
+            <FrameLayout
+                android:id="@+id/thumnailsImgLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/thumnails_img"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_centerVertical="true"
+                    android:tint="@color/colorPrimaryDark"
+                    android:src="@mipmap/ic_logo"></de.hdodenhof.circleimageview.CircleImageView>
+
+                <ImageView
+                    android:id="@+id/mediaTypeImg"
+                    android:layout_width="@dimen/_15ssp"
+                    android:layout_height="@dimen/_15ssp"
+                    android:layout_gravity="right|bottom"
+                    android:tint="@color/colorAccent"
+                    android:src="@drawable/ic_video_library_black_24dp"></ImageView>
+            </FrameLayout>
 
             <RelativeLayout
                 android:id="@+id/title_ss_RL"
@@ -31,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/thumnails_img"
+                android:layout_toRightOf="@+id/thumnailsImgLayout"
                 android:gravity="center_vertical">
 
                 <TextView
@@ -45,11 +60,11 @@
                     android:textStyle="bold"></TextView>
 
                 <LinearLayout
-                    android:layout_alignParentRight="true"
                     android:id="@+id/fileSizeLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/title_ss_tv"
+                    android:layout_alignParentRight="true"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 

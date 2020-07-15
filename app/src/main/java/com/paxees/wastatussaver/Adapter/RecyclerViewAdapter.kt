@@ -14,14 +14,19 @@ import com.paxees.wastatussaver.Utils.Utils
 import kotlinx.android.synthetic.main.adatper_listview.view.*
 import java.io.File
 
-class RecyclerViewAdapter(val items: ArrayList<StatusData>, val context: Context,fragmentName:String) :
+class RecyclerViewAdapter(
+    val items: ArrayList<StatusData>,
+    val context: Context,
+    fragmentName: String
+) :
     RecyclerView.Adapter<ViewHolder>() {
-    var fragmentname:String?=null
+    var fragmentname: String? = null
     override fun getItemCount(): Int {
         return items.size
     }
+
     init {
-        this.fragmentname=fragmentName
+        this.fragmentname = fragmentName
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,16 +41,22 @@ class RecyclerViewAdapter(val items: ArrayList<StatusData>, val context: Context
 
     // Binds each animal in the ArrayList to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        var mediaFIle = items.get(position).media
         holder?.title_ss_tv?.text = items.get(position).filename
-        holder?.fileSize?.text = Utils.getFileSize(File(items.get(position).media).length())
-        holder?.fileDate?.text = Utils.getDate(File(items.get(position).media).lastModified())
-        items.get(position).media?.let {
+        holder?.fileSize?.text = Utils.getFileSize(File(mediaFIle).length())
+        holder?.fileDate?.text = Utils.getDate(File(mediaFIle).lastModified())
+        mediaFIle?.let {
             Utils.getFileType(it).let { holder?.fileFormat?.text = it }
         }
-        Glide.with(context).load("file://" + items.get(position).media).into(holder?.thumnails_img)
+        Glide.with(context).load("file://" + mediaFIle).into(holder?.thumnails_img)
+        if (mediaFIle!!.endsWith(".jpg") || mediaFIle.endsWith(".jpeg") || mediaFIle.endsWith(".png")) {
+            holder?.mediaTypeImg.setImageResource(R.drawable.ic_photo_black_24dp)
+        } else {
+            holder?.mediaTypeImg.setImageResource(R.drawable.ic_video_library_black_24dp)
+        }
         holder?.itemView.setOnClickListener(View.OnClickListener {
             var intent = Intent(context, MediaActivity::class.java)
-            intent.putExtra("Media",items.get(position).media)
+            intent.putExtra("Media", mediaFIle)
             intent.putExtra("fragmentName", this.fragmentname)
             context.startActivity(intent)
         })
@@ -59,4 +70,5 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val fileSize = view.fileSize
     val fileDate = view.fileDate
     val fileFormat = view.fileFormat
+    val mediaTypeImg = view.mediaTypeImg
 }
