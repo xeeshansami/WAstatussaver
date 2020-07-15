@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.paxees.wastatussaver.Adapter.RecyclerViewAdapter
-import com.paxees.wastatussaver.Dashboard
+import com.paxees.wastatussaver.Activities.Dashboard
 import com.paxees.wastatussaver.Models.StatusData
 
 import com.paxees.wastatussaver.R
@@ -44,7 +44,7 @@ class SavedVideos : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_saved_videos, container, false)
+        return inflater.inflate(R.layout.fragment_saved_media, container, false)
     } override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()

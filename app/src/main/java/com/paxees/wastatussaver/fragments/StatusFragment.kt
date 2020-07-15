@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.paxees.wastatussaver.Adapter.RecyclerViewAdapter
-import com.paxees.wastatussaver.Dashboard
+import com.paxees.wastatussaver.Activities.Dashboard
 import com.paxees.wastatussaver.Models.StatusData
 import com.paxees.wastatussaver.R
 import kotlinx.android.synthetic.main.fragment_status.*
 import java.io.File
 import java.util.*
 
-class Status : Fragment() {
+class StatusFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

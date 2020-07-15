@@ -7,13 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.viewpager.widget.ViewPager
 import com.paxees.wastatussaver.Adapter.RecyclerViewAdapter
-import com.paxees.wastatussaver.Adapter.ViewPagerAdapter
-import com.paxees.wastatussaver.Dashboard
+import com.paxees.wastatussaver.Activities.Dashboard
 import com.paxees.wastatussaver.Models.StatusData
 import com.paxees.wastatussaver.R
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_status.*
 import java.io.File
 import java.util.ArrayList
@@ -40,7 +37,7 @@ class SavedImages : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_saved_images, container, false)
+        return inflater.inflate(R.layout.fragment_saved_media, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

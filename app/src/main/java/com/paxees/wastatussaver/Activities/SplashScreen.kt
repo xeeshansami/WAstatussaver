@@ -1,4 +1,4 @@
-package com.paxees.wastatussaver
+package com.paxees.wastatussaver.Activities
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -10,6 +10,7 @@ import android.os.Handler
 import android.widget.Toast
 import com.nabinbhandari.android.permissions.PermissionHandler
 import com.nabinbhandari.android.permissions.Permissions
+import com.paxees.wastatussaver.R
 import com.paxees.wastatussaver.Utils.Utils
 import java.util.*
 
