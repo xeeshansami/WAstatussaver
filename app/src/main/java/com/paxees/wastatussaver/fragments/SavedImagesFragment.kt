@@ -17,6 +17,7 @@ import com.paxees.wastatussaver.Activities.Dashboard
 import com.paxees.wastatussaver.Models.StatusData
 import com.paxees.wastatussaver.R
 import com.paxees.wastatussaver.Utils.Constant
+import com.paxees.wastatussaver.Utils.setOnitemClickListner
 import kotlinx.android.synthetic.main.fragment_status.*
 import java.io.File
 import java.util.ArrayList
@@ -31,7 +32,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SavedImages.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SavedImages : Fragment() {
+class SavedImagesFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +64,12 @@ class SavedImages : Fragment() {
         } else {
             no_data_found_tv.setVisibility(View.GONE)
             status_rv.setVisibility(View.VISIBLE)
-            var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedImagesFragment")
+            var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedImagesFragment",object :setOnitemClickListner{
+                override fun onLongClick(view: View?, mediaFile: String?, position: Int) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+            })
             status_rv.setAdapter(adapter)
             adapter.notifyDataSetChanged()
         }
@@ -105,7 +111,10 @@ class SavedImages : Fragment() {
                 } else {
                     no_data_found_tv.setVisibility(View.GONE)
                     status_rv.setVisibility(View.VISIBLE)
-                    var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedImagesFragment")
+                    var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedImagesFragment",object :setOnitemClickListner{
+                        override fun onLongClick(view: View?, mediaFile: String?, position: Int) {
+                        }
+                    })
                     status_rv.setAdapter(adapter)
                     adapter.notifyDataSetChanged()
                 }

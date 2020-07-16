@@ -16,16 +16,17 @@ class Utils {
         btn1: String?,
         OnClickListener: setOnitemClickListner
     ) {
-        listener = OnClickListener
+       /* listener = OnClickListener
         val builder = AlertDialog.Builder(context!!)
         builder.setCancelable(false)
         builder.setTitle(title)
         builder.setMessage(msg)
         builder.setPositiveButton(
             btn1
-        ) { dialogInterface, i -> listener!!.onClick(dialogInterface) }
+        ) {
+                dialogInterface, i -> listener!!.onLongClick(dialogInterface) }
         val alert = builder.create()
-        alert.show()
+        alert.show()*/
     }
 
     companion object {

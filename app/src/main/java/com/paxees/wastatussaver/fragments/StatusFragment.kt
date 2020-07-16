@@ -9,6 +9,7 @@ import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.view.ActionMode
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,12 +18,14 @@ import com.paxees.wastatussaver.Adapter.RecyclerViewAdapter
 import com.paxees.wastatussaver.Models.StatusData
 import com.paxees.wastatussaver.R
 import com.paxees.wastatussaver.Utils.Constant
+import com.paxees.wastatussaver.Utils.setOnitemClickListner
 import kotlinx.android.synthetic.main.fragment_status.*
 import java.io.File
 import java.util.*
 
-class StatusFragment : Fragment() {
 
+class StatusFragment : Fragment() {
+    var adapter:RecyclerViewAdapter?=null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,9 +51,14 @@ class StatusFragment : Fragment() {
         } else {
             no_data_found_tv.setVisibility(View.GONE)
             status_rv.setVisibility(View.VISIBLE)
-            var adapter = RecyclerViewAdapter(getFilePaths(), (activity as Dashboard), "StatusesFragment")
+             adapter = RecyclerViewAdapter(getFilePaths(), (activity as Dashboard), "StatusesFragment",object : setOnitemClickListner{
+                override fun onLongClick(view: View?, mediaFile: String?, position: Int) {
+
+                }
+
+            })
             status_rv.setAdapter(adapter)
-            adapter.notifyDataSetChanged()
+            adapter?.notifyDataSetChanged()
         }
     }
 
@@ -155,9 +163,13 @@ class StatusFragment : Fragment() {
                 } else {
                     no_data_found_tv.setVisibility(View.GONE)
                     status_rv.setVisibility(View.VISIBLE)
-                    var adapter = RecyclerViewAdapter(getFilePaths(), (activity as Dashboard), "StatusesFragment")
+                     adapter = RecyclerViewAdapter(getFilePaths(), (activity as Dashboard), "StatusesFragment",object : setOnitemClickListner{
+                        override fun onLongClick(view: View?, mediaFile: String?, position: Int) {
+
+                        }
+                    })
                     status_rv.setAdapter(adapter)
-                    adapter.notifyDataSetChanged()
+                    adapter?.notifyDataSetChanged()
                 }
             }
         }

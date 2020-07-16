@@ -18,31 +18,18 @@ import com.paxees.wastatussaver.Models.StatusData
 
 import com.paxees.wastatussaver.R
 import com.paxees.wastatussaver.Utils.Constant
+import com.paxees.wastatussaver.Utils.setOnitemClickListner
 import kotlinx.android.synthetic.main.fragment_status.*
 import java.io.File
 import java.util.ArrayList
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SavedVideos.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SavedVideos : Fragment() {
+class SavedVideosFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -72,7 +59,12 @@ class SavedVideos : Fragment() {
         } else {
             no_data_found_tv.setVisibility(View.GONE)
             status_rv.setVisibility(View.VISIBLE)
-            var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedVideosFragment")
+            var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedVideosFragment",object :setOnitemClickListner{
+                override fun onLongClick(view: View?, mediaFile: String?, position: Int) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+            })
             status_rv.setAdapter(adapter)
             adapter.notifyDataSetChanged()
         }
@@ -108,7 +100,11 @@ class SavedVideos : Fragment() {
                 } else {
                     no_data_found_tv.setVisibility(View.GONE)
                     status_rv.setVisibility(View.VISIBLE)
-                    var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedVideosFragment")
+                    var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedVideosFragment",object :setOnitemClickListner{
+                        override fun onLongClick(view: View?, mediaFile: String?, position: Int) {
+                            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        }
+                    })
                     status_rv.setAdapter(adapter)
                     adapter.notifyDataSetChanged()
                 }

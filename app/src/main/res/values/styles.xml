@@ -21,6 +21,17 @@
     </style>
 
     <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/imprima</item>
+        <item name="android:color">@color/LightYellow</item>
+    </style>
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/imprima</item>
+    </style>
+    <style name="TextAppearance.MaterialComponents.Caption" parent="TextAppearance.AppCompat.Menu">
+        <item name="fontFamily">@font/imprima</item>
     </style>
 </resources>

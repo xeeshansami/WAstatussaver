@@ -16,7 +16,6 @@ class MediaActivity : AppCompatActivity() {
         init()
     }
     fun init() {
-        tabs.setupWithViewPager(view_pager)
         if (intent.hasExtra("Media")) {
             mediaFile = intent.getStringExtra("Media")
         }
@@ -25,15 +24,15 @@ class MediaActivity : AppCompatActivity() {
         mediaFile.let {
             var fileType = it?.substring(it.lastIndexOf(".") + 1)
             if (fileType.equals("jpg") || fileType.equals("jpeg") || fileType.equals("png")) {
-                addTabs(view_pager, "Image")
+                addTabs(view_pager)
             } else {
-                addTabs(view_pager, "Video")
+                addTabs(view_pager)
             }
         }
     }
-    private fun addTabs(viewPager: ViewPager, type: String) {
+    private fun addTabs(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(getSupportFragmentManager())
-        adapter.addFrag(OpenMediaFragment(), type)
+        adapter.addFrag(OpenMediaFragment())
         viewPager.adapter = adapter
     }
 }
