@@ -4,30 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/black_them"
-    >
+    android:background="@drawable/black_them">
 
     <TextView
+        android:id="@+id/splashLogoTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_50ssp"
         android:fontFamily="@font/imprima"
         android:gravity="center"
         android:text="@string/appTitleName"
         android:textColor="@color/White"
         android:textSize="@dimen/_15ssp"
-        android:layout_marginBottom="@dimen/_50ssp"
-        app:layout_constraintBottom_toTopOf="@+id/copyRightTxt"
-     ></TextView>
+        app:layout_constraintBottom_toTopOf="@+id/copyRightTxt"></TextView>
 
     <TextView
         android:id="@+id/copyRightTxt"
-        android:gravity="center"
-        android:textSize="@dimen/_10ssp"
-        android:textColor="@color/White"
-        android:text="@string/copyright"
-        android:fontFamily="@font/imprima"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></TextView>
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/imprima"
+        android:gravity="center"
+        android:text="@string/copyright"
+        android:textColor="@color/White"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="parent"></TextView>
+
+    <ImageView
+        android:layout_width="@dimen/_70ssp"
+        android:layout_height="@dimen/_70ssp"
+        android:src="@mipmap/ic_logo"
+        app:layout_constraintBottom_toTopOf="@+id/splashLogoTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></ImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
