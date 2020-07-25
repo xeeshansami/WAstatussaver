@@ -18,11 +18,12 @@
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
     <TextView
-        android:id="@+id/no_data_found_tv"
         android:visibility="gone"
-        android:textColor="@color/Tomato"
-        android:drawableTint="@color/Tomato"
+        android:id="@+id/no_data_found_tv"
+        android:drawableTint="@color/Red"
         android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/_40ssp"
+        android:textColor="@color/Red"
         android:drawableLeft="@android:drawable/ic_menu_info_details"
         android:text="@string/no_data_found"
         android:layout_gravity="center_horizontal|center_vertical"

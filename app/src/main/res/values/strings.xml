@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">WAStatusSaver</string>
-    <string name="appTitleName">WhatsApp\nStatus Saver</string>
+    <string name="appTitleName">WhatsApp Status Saver</string>
     <string name="tab_text_1">Status</string>
     <string name="tab_text_2">Saved Images</string>
     <string name="tab_text_3">Saved Videos</string>
-    <string name="copyright">© 2020 Paxees Inc.</string>
+    <string name="copyright">©2020Paxees</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

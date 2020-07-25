@@ -19,15 +19,17 @@
         android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/no_data_found_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
         android:drawableLeft="@android:drawable/ic_menu_info_details"
-        android:drawableTint="@color/Tomato"
+        android:drawableTint="@color/Red"
         android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/_40ssp"
         android:text="@string/no_data_found"
-        android:textColor="@color/Tomato"
-        android:visibility="gone"></TextView>
+        android:textColor="@color/Red"
+        ></TextView>
 
 </FrameLayout>

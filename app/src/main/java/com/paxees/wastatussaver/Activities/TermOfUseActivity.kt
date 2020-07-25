@@ -14,7 +14,7 @@ class TermOfUseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_term_of_use)
         toolbar.setTitle("")
-        toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_black_24dp)
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
         toolbar.setOnClickListener(View.OnClickListener {
             finish()
         })

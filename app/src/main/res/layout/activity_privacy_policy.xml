@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:background="@color/dimBlackColorBg"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,25 +21,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center"
-            android:background="@color/Gray"
+            android:background="@color/dimBlackColorBg"
             android:gravity="center_vertical|center"></androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:id="@+id/privacyPolicyHeederID"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_60ssp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5ssp"
         android:layout_below="@+id/appbar"
         android:layout_margin="@dimen/_5ssp"
-        android:background="@drawable/privacypolicy_btns_bg"
+        android:background="@color/dimBlackColorBg"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/imprima"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
+            android:gravity="left"
             android:text="@string/privacyPolicyStr"
             android:textColor="@color/Red"
             android:textSize="@dimen/_20ssp"

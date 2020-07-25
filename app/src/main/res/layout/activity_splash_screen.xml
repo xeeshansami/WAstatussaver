@@ -14,7 +14,7 @@
         android:gravity="center"
         android:text="@string/appTitleName"
         android:textColor="@color/White"
-        android:textSize="@dimen/_20ssp"
+        android:textSize="@dimen/_15ssp"
         android:layout_marginBottom="@dimen/_50ssp"
         app:layout_constraintBottom_toTopOf="@+id/copyRightTxt"
      ></TextView>
@@ -22,7 +22,7 @@
     <TextView
         android:id="@+id/copyRightTxt"
         android:gravity="center"
-        android:textSize="@dimen/_12ssp"
+        android:textSize="@dimen/_10ssp"
         android:textColor="@color/White"
         android:text="@string/copyright"
         android:fontFamily="@font/imprima"

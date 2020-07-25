@@ -1,13 +1,21 @@
 package com.paxees.wastatussaver.Utils
 
+import android.R
+import android.app.Activity
+import android.app.Dialog
 import android.content.Context
-import androidx.appcompat.app.AlertDialog
+import android.content.Intent
+import android.view.View
+import android.view.Window
+import android.widget.Button
+import android.widget.TextView
 import java.text.DateFormat
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.util.*
+
 
 class Utils {
+
     var listener: setOnitemClickListner? = null
     fun alertBox(
         context: Context?,
@@ -16,20 +24,35 @@ class Utils {
         btn1: String?,
         OnClickListener: setOnitemClickListner
     ) {
-       /* listener = OnClickListener
-        val builder = AlertDialog.Builder(context!!)
-        builder.setCancelable(false)
-        builder.setTitle(title)
-        builder.setMessage(msg)
-        builder.setPositiveButton(
-            btn1
-        ) {
-                dialogInterface, i -> listener!!.onLongClick(dialogInterface) }
-        val alert = builder.create()
-        alert.show()*/
+        /* listener = OnClickListener
+         val builder = AlertDialog.Builder(context!!)
+         builder.setCancelable(false)
+         builder.setTitle(title)
+         builder.setMessage(msg)
+         builder.setPositiveButton(
+             btn1
+         ) {
+                 dialogInterface, i -> listener!!.onLongClick(dialogInterface) }
+         val alert = builder.create()
+         alert.show()*/
     }
 
     companion object {
+
+
+        var progressDialog: TransparentProgressDialog? = null
+        fun showDialog(context: Context?) {
+            progressDialog = TransparentProgressDialog(context!!)
+            progressDialog!!.setCancelable(false)
+            progressDialog!!.show()
+        }
+
+        fun hideLoader() {
+            if (progressDialog != null && progressDialog!!.isShowing()) {
+                progressDialog!!.cancel()
+            }
+        }
+
         fun getFileSize(size: Long): String? {
             if (size <= 0) return "0"
             val units = arrayOf("B", "KB", "MB", "GB", "TB")
@@ -52,6 +75,15 @@ class Utils {
         fun getFileType(filePath: String): String {
             return filePath.substring(filePath.lastIndexOf(".") + 1)
         }
+
+        fun gotoActivity(
+            context: Context?,
+            activity: Class<*>?
+        ) {
+            var intent = Intent(context, activity)
+            context?.startActivity(intent)
+        }
     }
+
 
 }

@@ -83,7 +83,7 @@ class SavedImagesFragment : Fragment() {
 
     fun getFilePaths(): ArrayList<StatusData> {
         val resultIAV: ArrayList<StatusData> = ArrayList<StatusData>()
-        val folder = File(Environment.getExternalStorageDirectory().absolutePath + "/StatusFolder")
+        val folder = File(Environment.getExternalStorageDirectory().absolutePath + "/Pax-StatusSaver")
         try {
             val allFiles =
                 folder.listFiles { dir, name ->

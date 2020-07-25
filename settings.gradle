@@ -1,2 +1,3 @@
 rootProject.name='WAStatusSaver'
 include ':app'
+include ':mkLoaderView'
