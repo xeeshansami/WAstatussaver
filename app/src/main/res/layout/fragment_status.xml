@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
     tools:context=".fragments.StatusFragment">
-
+    <ImageView
+        android:rotation="180"
+        android:background="@drawable/black_them"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ImageView>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/status_rv"
         android:layout_width="match_parent"

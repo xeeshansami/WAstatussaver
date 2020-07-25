@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center"
+            android:background="@color/Gray"
+            android:gravity="center_vertical|center"></androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/privacyPolicyHeederID"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60ssp"
+        android:layout_below="@+id/appbar"
+        android:layout_margin="@dimen/_5ssp"
+        android:background="@drawable/privacypolicy_btns_bg"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/termsOfUseStr"
+            android:textColor="@color/Red"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"></TextView>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/privacyPolicyImgID"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/privacyPolicyHeederID"
+        android:layout_margin="@dimen/_20ssp"
+        android:scaleType="fitXY"
+        android:src="@drawable/img2"></ImageView>
+
+    <TextView
+        android:id="@+id/privacyPolicyBodyHeaderID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/privacyPolicyImgID"
+        android:layout_margin="@dimen/_5ssp"
+        android:fontFamily="@font/imprima"
+        android:gravity="center"
+        android:text="@string/youtTextWillBeHereStr"
+        android:textColor="@color/Gray"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/privacyPolicyBodyHeaderID"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_5ssp"
+        android:fontFamily="@font/imprima"
+        android:gravity="center"
+        android:text="@string/privacyPolicyDescStr"
+        android:textColor="@color/Gray"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"></TextView>
+</RelativeLayout>

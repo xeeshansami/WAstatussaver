@@ -1,5 +1,6 @@
 package com.paxees.wastatussaver.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.FrameLayout
@@ -23,6 +24,7 @@ class Dashboard : AppCompatActivity() {
         init()
         viewPager()
     }
+
     fun init() {
         toolbar.setTitle("Status Saver")
         setSupportActionBar(toolbar)
@@ -38,6 +40,7 @@ class Dashboard : AppCompatActivity() {
         adjustGravity(tabs)
         adjustWidth(tabs)
     }
+
     fun viewPager() {
         view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
@@ -60,6 +63,7 @@ class Dashboard : AppCompatActivity() {
 
         setupViewPager(view_pager)
     }
+
     private fun adjustGravity(v: View) {
         if (v.id == R.id.smallLabel) {
             val parent = v.parent as ViewGroup
@@ -94,6 +98,7 @@ class Dashboard : AppCompatActivity() {
             // TODO
         }
     }
+
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         statusFragment = StatusFragment()
@@ -109,7 +114,14 @@ class Dashboard : AppCompatActivity() {
         getMenuInflater().inflate(R.menu.dashboard_menu, menu);
         return true;
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.setting -> {
+                var Intent = Intent(this, SettingActivity::class.java)
+                startActivity(Intent)
+            }
+        }
         return super.onOptionsItemSelected(item)
     }
 }
