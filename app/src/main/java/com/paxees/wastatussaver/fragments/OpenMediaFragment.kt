@@ -182,7 +182,7 @@ class OpenMediaFragment : Fragment() {
                 )!!
             val `in` = videoAsset.createInputStream()
             val filepath = Environment.getExternalStorageDirectory()
-            val dir = File(filepath.path + "/" + "StatusFolder" + "/")
+            val dir = File(filepath.path + "/" + "Pax-StatusSaver" + "/")
             if (!dir.exists()) {
                 dir.mkdirs()
             }
@@ -218,7 +218,7 @@ class OpenMediaFragment : Fragment() {
         var path = path
         val bMap = ThumbnailUtils.createVideoThumbnail(path, MediaStore.Video.Thumbnails.MICRO_KIND)
         path = path?.substring(path?.lastIndexOf("/") + 1, path.length - 4)
-        val Foldername = "StatusFolder"
+        val Foldername = "Pax-StatusSaver"
         val mBaseFolderPath =
             File(Environment.getExternalStorageDirectory(), Foldername)
         if (!mBaseFolderPath.exists() && mBaseFolderPath.isDirectory) {

@@ -19,12 +19,21 @@
 
     <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
         <item name="android:textSize">10sp</item>
+        <item name="android:color">@color/Red</item>
+        <item name="itemTextAppearanceActive">@color/Red</item>
     </style>
 
     <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:state_active">@color/Red</item>
+        <item name="itemTextAppearanceActive">@color/Red</item>
     </style>
-
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
     <style name="Loader" parent="Theme.AppCompat.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>

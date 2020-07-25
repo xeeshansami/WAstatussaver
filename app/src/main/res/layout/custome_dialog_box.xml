@@ -6,6 +6,7 @@
 
     <ImageView
         android:id="@+id/a"
+        android:padding="@dimen/_15ssp"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:src="@mipmap/ic_logo"

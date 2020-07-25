@@ -10,8 +10,8 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:background="@color/dimBlackColorBg"
+        android:gravity="center_vertical"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,61 +24,79 @@
             android:gravity="center_vertical|center"></androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:id="@+id/privacyPolicyHeederID"
+    <ScrollView
+        android:scrollbars="vertical"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbarSize="@dimen/_1ssp"
+        android:scrollIndicators="right"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_5ssp"
-        android:layout_below="@+id/appbar"
-        android:layout_margin="@dimen/_5ssp"
-        android:background="@color/dimBlackColorBg"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_below="@+id/appbar">
 
-        <TextView
-            android:fontFamily="@font/imprima"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="left"
-            android:text="@string/termsOfUseStr"
-            android:textColor="@color/Red"
-            android:textSize="@dimen/_20ssp"
-            android:textStyle="bold"></TextView>
-    </LinearLayout>
+            android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/privacyPolicyImgID"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/privacyPolicyHeederID"
-        android:layout_margin="@dimen/_20ssp"
-        android:scaleType="fitXY"
-        android:src="@drawable/img2"></ImageView>
+            <LinearLayout
+                android:id="@+id/privacyPolicyHeederID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5ssp"
+                android:background="@color/dimBlackColorBg"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/_5ssp">
 
-    <TextView
-        android:id="@+id/privacyPolicyBodyHeaderID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/privacyPolicyImgID"
-        android:layout_margin="@dimen/_5ssp"
-        android:fontFamily="@font/imprima"
-        android:gravity="center"
-        android:text="@string/youtTextWillBeHereStr"
-        android:textColor="@color/Gray"
-        android:textSize="@dimen/_15ssp"
-        android:textStyle="bold"></TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/imprima"
+                    android:gravity="left"
+                    android:text="@string/termsOfUseStr"
+                    android:textColor="@color/Red"
+                    android:textSize="@dimen/_20ssp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/privacyPolicyBodyHeaderID"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_5ssp"
-        android:fontFamily="@font/imprima"
-        android:gravity="center"
-        android:text="@string/privacyPolicyDescStr"
-        android:textColor="@color/Gray"
-        android:textSize="@dimen/_10ssp"
-        android:textStyle="bold"></TextView>
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:id="@+id/privacyPolicyImgID"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/privacyPolicyHeederID"
+                android:layout_margin="@dimen/_20ssp"
+                android:scaleType="fitXY"
+                android:src="@drawable/privacy_policy_icon"></ImageView>
+
+            <TextView
+                android:id="@+id/privacyPolicyBodyHeaderID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/privacyPolicyImgID"
+                android:layout_margin="@dimen/_5ssp"
+                android:fontFamily="@font/imprima"
+                android:gravity="left"
+                android:scrollHorizontally="true"
+                android:text="@string/termsOfUseStr"
+                android:textColor="@color/Gray"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/privacyPolicyBodyHeaderID"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/_5ssp"
+                android:fontFamily="@font/imprima"
+                android:maxLines="500"
+                android:paddingLeft="@dimen/_2ssp"
+                android:scrollbars="vertical"
+                android:text="@string/termsAndConditionsDataStr"
+                android:textColor="@color/Gray"
+                android:textSize="@dimen/_10ssp"
+                android:textStyle="bold"></TextView>
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

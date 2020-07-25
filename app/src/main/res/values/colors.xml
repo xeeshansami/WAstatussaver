@@ -99,6 +99,7 @@
     <color name="LightSkyBlue">#87CEFA</color>
     <color name="SkyBlue">#87CEEB</color>
     <color name="Gray">#808080</color>
+    <color name="whatsappColor">#4CCB5B</color>
     <color name="Olive">#808000</color>
     <color name="Purple">#800080</color>
     <color name="Maroon">#800000</color>
@@ -142,11 +143,13 @@
     <color name="Green">#008000</color>
     <color name="DarkGreen">#006400</color>
     <color name="Blue">#0000FF</color>
+    <color name="facebookColor">#455DA0</color>
     <color name="MediumBlue">#0000CD</color>
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
     <color name="et_lines">#85878E</color>
+    <color name="pressColor">#383939</color>
     <color name="dimBlackColorBg">#2F2F30</color>
     <color name="dimBlackColorBgClick">#1F1F20</color>
 </resources>

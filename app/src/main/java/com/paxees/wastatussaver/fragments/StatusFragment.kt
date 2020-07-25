@@ -78,9 +78,9 @@ class StatusFragment : Fragment() {
             File(Environment.getExternalStorageDirectory().absolutePath + "/WhatsApp/Media/.Statuses")
         val whatsappBusinessFolder =
             File(Environment.getExternalStorageDirectory().absolutePath + "/WhatsApp Business/Media/.Statuses")
-        if (whatsappNormalFolder.exists() && whatsappBusinessFolder.exists()) {
+      /*  if (whatsappNormalFolder.exists() && whatsappBusinessFolder.exists()) {
             try {
-                /*For Normal Whatsapp*/
+                *//*For Normal Whatsapp*//*
                 val allFilesOfWhatsappNormalFolder = whatsappNormalFolder.listFiles { dir, name ->
                     (name.endsWith(".mp4")
                             || name.endsWith(".3gp")
@@ -96,7 +96,7 @@ class StatusFragment : Fragment() {
                     resultIAV.add(path)
                 }
 
-                /*For Business Whatsapp*/
+                *//*For Business Whatsapp*//*
                 val allFilesWhatsappBusinessFolder =
                     whatsappBusinessFolder.listFiles { dir, name ->
                         (name.endsWith(".mp4")
@@ -114,7 +114,7 @@ class StatusFragment : Fragment() {
                 }
             } catch (e: NullPointerException) {
             }
-        } else {
+        } else {*/
             if (whatsappNormalFolder.exists()) {
                 try {
                     val allFiles =
@@ -154,7 +154,7 @@ class StatusFragment : Fragment() {
                 } catch (e: NullPointerException) {
                 }
             }
-        }
+//        }
         return resultIAV
     }
 

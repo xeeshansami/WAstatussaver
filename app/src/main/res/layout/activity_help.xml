@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/Black">
 
+
     <ScrollView
-        android:scrollbars="vertical"
-        android:scrollbarThumbVertical="@android:color/darker_gray"
-        android:scrollbarSize="@dimen/_1ssp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appbar">
+        android:layout_below="@+id/appbar"
+        android:scrollbarSize="@dimen/_1ssp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,20 +26,22 @@
                 android:layout_margin="@dimen/_5ssp"
                 android:gravity="center"
                 android:orientation="vertical">
+
                 <ImageView
-                    android:id="@+id/settingBackBtn"
+                    android:id="@+id/helpBackBtn"
                     android:layout_width="@dimen/_30ssp"
                     android:layout_height="@dimen/_30ssp"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/_2ssp"
                     android:src="@drawable/ic_arrow_back_white_24dp"></ImageView>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5ssp"
                     android:fontFamily="@font/imprima"
                     android:gravity="left"
-                    android:text="Setting"
+                    android:text="Help"
                     android:textColor="@color/Red"
                     android:textSize="@dimen/_30ssp"
                     android:textStyle="bold"></TextView>
@@ -51,7 +54,8 @@
                     android:gravity="left"
                     android:text="@string/findHelpStr"
                     android:textColor="@color/White"
-                    android:textSize="@dimen/_15ssp"></TextView>
+                    android:textSize="@dimen/_15ssp"
+                    android:visibility="gone"></TextView>
 
                 <View
                     android:layout_width="match_parent"
@@ -74,19 +78,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5ssp"
-                    android:drawableTint="@color/White"
+                    android:drawableTint="@color/Blue"
                     android:fontFamily="@font/imprima"
                     android:gravity="left"
-                    android:text="@string/languageStr"
+                    android:text="@string/facebookLinkStr"
                     android:textColor="@color/White"
                     android:textSize="@dimen/_13ssp"
                     android:textStyle="bold"></TextView>
 
                 <LinearLayout
-                    android:padding="@dimen/_3ssp"
+                    android:id="@+id/facebookPageID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/dimBlackColorBg"
+                    android:background="@drawable/setting_button_clicks"
+                    android:padding="@dimen/_3ssp"
                     android:weightSum="3">
 
                     <ImageView
@@ -94,15 +99,14 @@
                         android:layout_height="@dimen/_20ssp"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="@dimen/_2ssp"
-                        android:src="@drawable/ic_language_black_24dp"
-                        android:tint="@color/Gray"></ImageView>
+                        android:src="@drawable/ic_facebook"></ImageView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_5ssp"
                         android:layout_weight="3"
-                        android:background="@color/dimBlackColorBg"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -111,8 +115,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/imprima"
                             android:gravity="center_vertical"
-                            android:text="@string/englishStr"
-                            android:textColor="@color/Gray"
+                            android:text="@string/paxeesStr"
+                            android:textColor="@color/facebookColor"
                             android:textSize="@dimen/_13ssp"
                             android:textStyle="bold"></TextView>
 
@@ -145,16 +149,17 @@
                     android:drawableTint="@color/Gray"
                     android:fontFamily="@font/imprima"
                     android:gravity="left"
-                    android:text="@string/storageStr"
+                    android:text="@string/whatsappStr"
                     android:textColor="@color/White"
                     android:textSize="@dimen/_13ssp"
                     android:textStyle="bold"></TextView>
 
                 <LinearLayout
-                    android:padding="@dimen/_3ssp"
+                    android:id="@+id/whatsappID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/dimBlackColorBg"
+                    android:background="@drawable/setting_button_clicks"
+                    android:padding="@dimen/_3ssp"
                     android:weightSum="3">
 
                     <ImageView
@@ -162,15 +167,14 @@
                         android:layout_height="@dimen/_20ssp"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="@dimen/_2ssp"
-                        android:src="@drawable/ic_folder_black_24dp"
-                        android:tint="@color/Gray"></ImageView>
+                        android:src="@drawable/ic_whatsapp"></ImageView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_5ssp"
                         android:layout_weight="3"
-                        android:background="@color/dimBlackColorBg"
                         android:orientation="vertical">
 
                         <TextView
@@ -178,8 +182,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/imprima"
                             android:gravity="left"
-                            android:text="@string/folderLocationStr"
-                            android:textColor="@color/Gray"
+                            android:text="@string/whatsappNumberStr"
+                            android:textColor="@color/whatsappColor"
                             android:textSize="@dimen/_13ssp"
                             android:textStyle="bold"></TextView>
 
@@ -193,16 +197,17 @@
                     android:drawableTint="@color/Gray"
                     android:fontFamily="@font/imprima"
                     android:gravity="left"
-                    android:text="@string/notificationStr"
+                    android:text="@string/contactDetailStr"
                     android:textColor="@color/White"
                     android:textSize="@dimen/_13ssp"
                     android:textStyle="bold"></TextView>
 
                 <LinearLayout
-                    android:padding="@dimen/_3ssp"
+                    android:id="@+id/callNumberID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/dimBlackColorBg"
+                    android:background="@drawable/setting_button_clicks"
+                    android:padding="@dimen/_3ssp"
                     android:weightSum="3">
 
                     <ImageView
@@ -210,13 +215,14 @@
                         android:layout_height="@dimen/_20ssp"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="@dimen/_2ssp"
-                        android:src="@drawable/ic_notifications_active_black_24dp"
-                        android:tint="@color/Gray"></ImageView>
+                        android:src="@drawable/ic_local_phone_black_24dp"
+                        android:tint="@color/Green"></ImageView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_5ssp"
                         android:layout_weight="3"
                         android:orientation="vertical">
 
@@ -225,30 +231,30 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/imprima"
                             android:gravity="left"
-                            android:text="@string/allowNotificationStr"
-                            android:textColor="@color/Gray"
+                            android:text="@string/phoneNumberStr"
+                            android:textColor="@color/LightGreen"
                             android:textSize="@dimen/_13ssp"
                             android:textStyle="bold"></TextView>
                     </LinearLayout>
 
                     <androidx.appcompat.widget.SwitchCompat
-                        app:showText="true"
                         android:id="@+id/switchBtnNotification"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|center_vertical"
                         android:gravity="center_vertical"
+                        android:visibility="gone"
                         app:thumbTint="@color/Red"
                         app:trackTint="@color/LightRed"></androidx.appcompat.widget.SwitchCompat>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:padding="@dimen/_3ssp"
-                    android:id="@+id/clearFolderBtn"
+                    android:id="@+id/officialEmailID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_2ssp"
                     android:background="@drawable/setting_button_clicks"
+                    android:padding="@dimen/_3ssp"
                     android:weightSum="3">
 
                     <ImageView
@@ -256,13 +262,14 @@
                         android:layout_height="@dimen/_20ssp"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="@dimen/_2ssp"
-                        android:src="@drawable/ic_delete_sweep_black_24dp"
-                        android:tint="@color/Gray"></ImageView>
+                        android:src="@drawable/ic_email_black_24dp"
+                        android:tint="@color/LightRed"></ImageView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_5ssp"
                         android:layout_weight="3"
                         android:orientation="vertical">
 
@@ -271,8 +278,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/imprima"
                             android:gravity="left"
-                            android:text="@string/clearCacheStr"
-                            android:textColor="@color/Gray"
+                            android:text="@string/emailAddressStr"
+                            android:textColor="@color/LightRed"
                             android:textSize="@dimen/_13ssp"
                             android:textStyle="bold"></TextView>
 
@@ -281,20 +288,19 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/imprima"
                             android:gravity="left"
-                            android:text="@string/cacheDescStr"
-                            android:textColor="@color/Gray"
-                            android:textSize="@dimen/_10ssp"
-                            android:textStyle="bold"></TextView>
+                            android:text="@string/emailAddressValueStr"
+                            android:textColor="@color/Red"
+                            android:textSize="@dimen/_10ssp"></TextView>
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:padding="@dimen/_3ssp"
-                    android:id="@+id/resetBtn"
+                    android:id="@+id/supportEmailID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_2ssp"
                     android:background="@drawable/setting_button_clicks"
+                    android:padding="@dimen/_3ssp"
                     android:weightSum="3">
 
                     <ImageView
@@ -302,13 +308,14 @@
                         android:layout_height="@dimen/_20ssp"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="@dimen/_2ssp"
-                        android:src="@drawable/ic_restore_black_24dp"
-                        android:tint="@color/Gray"></ImageView>
+                        android:src="@drawable/ic_email_black_24dp"
+                        android:tint="@color/LightRed"></ImageView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_5ssp"
                         android:layout_weight="3"
                         android:orientation="vertical">
 
@@ -317,8 +324,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/imprima"
                             android:gravity="left"
-                            android:text="@string/resetStr"
-                            android:textColor="@color/Gray"
+                            android:text="@string/supportEmailStr"
+                            android:textColor="@color/LightRed"
                             android:textSize="@dimen/_13ssp"
                             android:textStyle="bold"></TextView>
 
@@ -327,10 +334,9 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/imprima"
                             android:gravity="left"
-                            android:text="@string/allAppClearStr"
-                            android:textColor="@color/Gray"
-                            android:textSize="@dimen/_10ssp"
-                            android:textStyle="bold"></TextView>
+                            android:text="@string/supportEmailAddressValueStr"
+                            android:textColor="@color/Red"
+                            android:textSize="@dimen/_10ssp"></TextView>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -347,11 +353,11 @@
                     android:textStyle="bold"></TextView>
 
                 <LinearLayout
-                    android:padding="@dimen/_3ssp"
-                    android:id="@+id/privacyPolicyBtnID"
+                    android:id="@+id/privacyPolicyBtnHelpID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/setting_button_clicks"
+                    android:padding="@dimen/_3ssp"
                     android:weightSum="3">
 
                     <ImageView
@@ -360,14 +366,13 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="@dimen/_2ssp"
                         android:src="@drawable/ic_priority_high_black_24dp"
-                        android:tint="@color/Gray"></ImageView>
+                        android:tint="@color/Blue"></ImageView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="3"
-                        android:background="@drawable/setting_button_clicks"
                         android:orientation="vertical">
 
                         <TextView
@@ -376,7 +381,7 @@
                             android:fontFamily="@font/imprima"
                             android:gravity="left"
                             android:text="@string/privacyPolicyStr"
-                            android:textColor="@color/Gray"
+                            android:textColor="@color/Blue"
                             android:textSize="@dimen/_13ssp"
                             android:textStyle="bold"></TextView>
                     </LinearLayout>
@@ -388,13 +393,14 @@
                         android:src="@drawable/ic_keyboard_arrow_right_black_24dp"></ImageView>
                 </LinearLayout>
 
+
                 <LinearLayout
-                    android:padding="@dimen/_3ssp"
-                    android:id="@+id/termsOfUseBtnID"
+                    android:id="@+id/ratingAndReviewID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_2ssp"
                     android:background="@drawable/setting_button_clicks"
+                    android:padding="@dimen/_3ssp"
                     android:weightSum="3">
 
                     <ImageView
@@ -402,8 +408,8 @@
                         android:layout_height="@dimen/_20ssp"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="@dimen/_2ssp"
-                        android:src="@drawable/ic_terms_conditions"
-                        android:tint="@color/Gray"></ImageView>
+                        android:src="@drawable/ic_rate_review_black_24dp"
+                        android:tint="@color/Blue"></ImageView>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -417,53 +423,9 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/imprima"
                             android:gravity="left"
-                            android:text="@string/termsOfUseStr"
-                            android:textColor="@color/Gray"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold"></TextView>
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="@dimen/_30ssp"
-                        android:layout_height="@dimen/_30ssp"
-                        android:layout_gravity="right|center_vertical"
-                        android:src="@drawable/ic_keyboard_arrow_right_black_24dp"></ImageView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:padding="@dimen/_3ssp"
-                    android:id="@+id/helpBtnID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_2ssp"
-                    android:background="@drawable/setting_button_clicks"
-                    android:weightSum="3">
-
-                    <ImageView
-                        android:layout_width="@dimen/_20ssp"
-                        android:layout_height="@dimen/_20ssp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="@dimen/_2ssp"
-                        android:src="@drawable/ic_help_black_24dp"
-                        android:tint="@color/Gray"></ImageView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="3"
-                        android:background="@drawable/setting_button_clicks"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/imprima"
-                            android:gravity="left"
-                            android:text="@string/helpStr"
-                            android:textColor="@color/Gray"
-                            android:textSize="@dimen/_13ssp"
-                            android:textStyle="bold"></TextView>
+                            android:text="@string/ratingStr"
+                            android:textColor="@color/Blue"
+                            android:textSize="@dimen/_13ssp"></TextView>
                     </LinearLayout>
 
                     <ImageView
@@ -479,22 +441,26 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/settingMainLayout"
                 android:layout_margin="@dimen/_5ssp"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_40ssp"
+                    android:layout_height="@dimen/_40ssp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="@dimen/_2ssp"
+                    android:src="@drawable/ic_paxees_logo"></ImageView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/_5ssp"
+                    android:layout_gravity="center|center_vertical"
                     android:fontFamily="@font/imprima"
-                    android:gravity="center"
-                    android:text="@string/contactStr"
+                    android:gravity="center|center_vertical"
+                    android:text="@string/paxeesTechStr"
                     android:textColor="@color/White"
                     android:textSize="@dimen/_15ssp"
                     android:textStyle="bold"></TextView>
-
-
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>

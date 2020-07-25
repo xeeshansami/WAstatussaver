@@ -29,11 +29,8 @@
             android:background="@color/colorAccent"
             android:gravity="center_vertical"
             android:scrollIndicators="bottom"
-            android:theme="@style/Widget.BottomNavigationView"
-            app:itemRippleColor="@color/White"
             app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
             app:itemTextAppearanceInactive="@style/BottomNavigationView"
-            app:itemTextColor="@color/White"
             app:menu="@menu/tabs_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
     </com.google.android.material.appbar.AppBarLayout>
 
