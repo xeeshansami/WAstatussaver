@@ -14,17 +14,24 @@
 
         <androidx.appcompat.widget.Toolbar
             app:titleTextColor="@color/Gray"
-            android:theme="@style/ToolbarTheme"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/gradiant_toolbar"></androidx.appcompat.widget.Toolbar>
 
-        <com.google.android.material.tabs.TabLayout
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark" />
+            android:layout_gravity="center_vertical|center"
+            android:animateLayoutChanges="true"
+            android:background="@color/colorAccent"
+            app:itemIconTint="@color/White"
+            android:gravity="center_vertical"
+            android:scrollIndicators="bottom"
+            app:itemTextAppearanceActive="@style/BottomNavigationView2.Active"
+            app:itemTextAppearanceInactive="@style/BottomNavigationView"
+            app:menu="@menu/media_file"></com.google.android.material.bottomnavigation.BottomNavigationView>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

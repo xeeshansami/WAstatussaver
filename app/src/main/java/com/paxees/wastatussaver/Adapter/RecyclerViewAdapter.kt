@@ -25,15 +25,16 @@ class RecyclerViewAdapter(
     val items: ArrayList<StatusData>,
     val context: Context,
     fragmentName: String,
-    onItemClickListener:setOnitemClickListner
+    onItemClickListener: setOnitemClickListner
 ) :
     RecyclerView.Adapter<ViewHolder>() {
     var onItemClickListener: setOnitemClickListner? = null
     var fragmentname: String? = null
 
     init {
-        this.onItemClickListener=onItemClickListener
+        this.onItemClickListener = onItemClickListener
     }
+
     override fun getItemCount(): Int {
         return items.size
     }
@@ -76,12 +77,17 @@ class RecyclerViewAdapter(
         })
         holder?.itemView.setOnLongClickListener(View.OnLongClickListener setOnLongClickListener@{
             onItemClickListener?.onLongClick(holder?.itemView, mediaFIle, position)
-            items.removeAt(position)
-            notifyDataSetChanged()
+            confirmSkipUpload(mediaFIle, position, items, context)
             return@setOnLongClickListener true
         })
     }
-    private fun confirmSkipUpload(mediaFile:String?,position: Int) {
+
+    private fun confirmSkipUpload(
+        mediaFile: String?,
+        position: Int,
+        items: ArrayList<StatusData>,
+        context: Context
+    ) {
         val builder = AlertDialog.Builder(context)
         //set title for alert dialog
         builder.setTitle(R.string.dialogTitle)
@@ -89,15 +95,17 @@ class RecyclerViewAdapter(
         builder.setMessage(R.string.dialogMessage)
         builder.setIcon(android.R.drawable.ic_dialog_alert)
         //performing positive action
-        builder.setPositiveButton("Yes"){dialogInterface, which ->
+        builder.setPositiveButton("Yes") { dialogInterface, which ->
+            items.removeAt(position)
             deleteVideo(mediaFile)
+            notifyDataSetChanged()
         }
         //performing cancel action
         /*   builder.setNeutralButton("Cancel"){dialogInterface , which ->
                Toast.makeText(context,"clicked cancel\n operation cancel",Toast.LENGTH_LONG).show()
            }*/
         //performing negative action
-        builder.setNegativeButton("No"){dialogInterface, which ->
+        builder.setNegativeButton("No") { dialogInterface, which ->
         }
         // Create the AlertDialog
         val alertDialog: AlertDialog = builder.create()
@@ -105,6 +113,7 @@ class RecyclerViewAdapter(
         alertDialog.setCancelable(false)
         alertDialog.show()
     }
+
     private fun deleteVideo(videoUrl: String?) {
         val videoFile = File(videoUrl)
         if (!videoFile.delete()) {

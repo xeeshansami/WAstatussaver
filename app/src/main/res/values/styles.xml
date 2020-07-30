@@ -28,6 +28,11 @@
         <item name="android:state_active">@color/Red</item>
         <item name="itemTextAppearanceActive">@color/Red</item>
     </style>
+    <style name="BottomNavigationView2.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+        <item name="android:state_active">@color/Red</item>
+        <item name="itemTextAppearanceActive">@color/Red</item>
+    </style>
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>

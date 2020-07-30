@@ -61,7 +61,6 @@ class SavedVideosFragment : Fragment() {
             status_rv.setVisibility(View.VISIBLE)
             var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedVideosFragment",object :setOnitemClickListner{
                 override fun onLongClick(view: View?, mediaFile: String?, position: Int) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
 
             })
@@ -105,7 +104,6 @@ class SavedVideosFragment : Fragment() {
                     status_rv.setVisibility(View.VISIBLE)
                     var adapter= RecyclerViewAdapter(getFilePaths(),(activity as Dashboard),"SavedVideosFragment",object :setOnitemClickListner{
                         override fun onLongClick(view: View?, mediaFile: String?, position: Int) {
-                            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                         }
                     })
                     status_rv.setAdapter(adapter)

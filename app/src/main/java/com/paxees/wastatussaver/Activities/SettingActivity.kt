@@ -169,7 +169,7 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
             dialog.dismiss()
         })
         privacyPolicyID.setOnClickListener(View.OnClickListener {
-            var uri = Uri.parse("https://paxees-statussaver.blogspot.com/");
+            var uri = Uri.parse("https://paxees-statussaver.blogspot.com/p/status-saver.html");
             startActivity(Intent(ACTION_VIEW, uri));
             dialog.dismiss()
         })

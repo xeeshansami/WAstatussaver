@@ -19,18 +19,20 @@ class MediaActivity : AppCompatActivity() {
         if (intent.hasExtra("Media")) {
             mediaFile = intent.getStringExtra("Media")
         }
-        toolbar.setTitle("Media")
+
         mediaFile.let { toolbar.setSubtitle(it?.substring(it.lastIndexOf("/") + 1)) }
         mediaFile.let {
             var fileType = it?.substring(it.lastIndexOf(".") + 1)
             if (fileType.equals("jpg") || fileType.equals("jpeg") || fileType.equals("png")) {
-                addTabs(view_pager)
+                toolbar.setTitle("Image Media")
+                addTabs(view_pager,"Image")
             } else {
-                addTabs(view_pager)
+                toolbar.setTitle("VIdeo Media")
+                addTabs(view_pager,"VIdeo")
             }
         }
     }
-    private fun addTabs(viewPager: ViewPager) {
+    private fun addTabs(viewPager: ViewPager, text: String) {
         val adapter = ViewPagerAdapter(getSupportFragmentManager())
         adapter.addFrag(OpenMediaFragment())
         viewPager.adapter = adapter
