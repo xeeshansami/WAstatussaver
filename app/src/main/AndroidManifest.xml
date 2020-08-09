@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.paxees.wastatussaver">
+    package="com.paxees.statussaver.forwaapp">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.SplashScreen"
+        <activity android:name="com.paxees.statussaver.forwaapp.Activities.SplashScreen"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,27 +25,27 @@
             </intent-filter>
         </activity>
         <activity
-        android:name=".Activities.HelpActivity"
+        android:name="com.paxees.statussaver.forwaapp.Activities.HelpActivity"
         android:label="@string/app_name"
         android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Activities.Dashboard"
+            android:name="com.paxees.statussaver.forwaapp.Activities.Dashboard"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Activities.TermOfUseActivity"
+            android:name="com.paxees.statussaver.forwaapp.Activities.TermOfUseActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Activities.PrivacyPolicyActivity"
+            android:name="com.paxees.statussaver.forwaapp.Activities.PrivacyPolicyActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Activities.SettingActivity"
+            android:name="com.paxees.statussaver.forwaapp.Activities.SettingActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Activities.MediaActivity"
+            android:name="com.paxees.statussaver.forwaapp.Activities.MediaActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <meta-data

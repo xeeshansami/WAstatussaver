@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">StatusSaver</string>
-    <string name="appTitleName">Status Saver</string>
+    <string name="app_name">StatusSaverForWhatsapp</string>
+    <string name="appTitleName">StatusSaver of whatsapp</string>
     <string name="tab_text_1">Status</string>
     <string name="tab_text_2">Saved Images</string>
     <string name="tab_text_3">Saved Videos</string>
-    <string name="copyright">Paxees©2020</string>
+    <string name="copyright">Copyright © 2020 Paxees Inc. All rights reserved.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -58,8 +58,6 @@
     <string name="nothingInDownloadsStr">Nothing In Downloads</string>
     <string name="tellYourFreindStr">Tell your friend about zvue</string>
     <string name="copyLinkStr">Copy Link</string>
-    <string name="fbStr">Facebook</string>
-    <string name="whatsappStr">Whats App</string>
     <string name="otherStr">Other</string>
     <string name="signOutStr">Sign Out</string>
     <string name="helpStr">Help?</string>
@@ -224,9 +222,6 @@ Contact Us
 
 If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us at info.paxees@gmail.com.     \n     \n
     </string>
-    <string name="facebookLinkStr">Facebook Page</string>
-    <string name="paxeesStr">"www.facebook.com/paxees "</string>
-    <string name="whatsappNumberStr">+92 (341) 203-0258</string>
     <string name="contactDetailStr">Contact Details</string>
     <string name="phoneNumberStr">+92 (021) 203-0258</string>
     <string name="emailAddressStr">Email Address</string>
