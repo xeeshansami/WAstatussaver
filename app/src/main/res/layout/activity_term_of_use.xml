@@ -22,6 +22,14 @@
             android:layout_gravity="center_vertical|center"
             android:background="@color/dimBlackColorBg"
             android:gravity="center_vertical|center"></androidx.appcompat.widget.Toolbar>
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_below="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/bannerID"></com.google.android.gms.ads.AdView>
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView

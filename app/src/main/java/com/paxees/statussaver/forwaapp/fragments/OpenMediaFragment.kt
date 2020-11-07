@@ -218,16 +218,14 @@ class OpenMediaFragment : Fragment() {
         val bMap = ThumbnailUtils.createVideoThumbnail(path, MediaStore.Video.Thumbnails.MICRO_KIND)
         path = path?.substring(path?.lastIndexOf("/") + 1, path.length - 4)
         val Foldername = "Pax-StatusSaver"
-        val mBaseFolderPath =
-            File(Environment.getExternalStorageDirectory(), Foldername)
-        if (!mBaseFolderPath.exists() && mBaseFolderPath.isDirectory) {
-            File(mBaseFolderPath.toString()).mkdir()
+        var dir = File(Environment.getExternalStorageDirectory().toString() ,Foldername)
+        if (!dir.exists()) {
+            dir.mkdirs()
         }
         try {
-            val out =
-                FileOutputStream("$mBaseFolderPath/$path.jpeg")
-            saveInGalleryForImage("$mBaseFolderPath/$path.jpeg")
-            bmp?.compress(Bitmap.CompressFormat.JPEG, 60, out) // bmp is your Bitmap instance
+            val out = FileOutputStream("$dir/$path.jpeg")
+            saveInGalleryForImage("$dir/$path.jpeg")
+            bmp?.compress(Bitmap.CompressFormat.JPEG, 100, out) // bmp is your Bitmap instance
             // PNG is a lossless format, the compression factor (100) is ignored
             out.flush()
             out.close()

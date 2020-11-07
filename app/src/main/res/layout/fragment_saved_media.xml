@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".forwaapp.fragments.StatusFragment">
+    android:layout_height="match_parent">
+
     <ImageView
-        android:rotation="180"
-        android:background="@drawable/black_them"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ImageView>
+        android:layout_height="match_parent"
+        android:background="@drawable/black_them"
+        android:rotation="180"></ImageView>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:scrollbars="vertical"
-        android:scrollbarThumbVertical="@android:color/darker_gray"
-        android:scrollbarSize="@dimen/_1ssp"
         android:id="@+id/status_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:scrollbarSize="@dimen/_1ssp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
+
     <TextView
-        android:visibility="gone"
         android:id="@+id/no_data_found_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginBottom="@dimen/_40ssp"
+        android:drawableLeft="@android:drawable/ic_menu_info_details"
         android:drawableTint="@color/Red"
         android:gravity="center_vertical"
-        android:layout_marginBottom="@dimen/_40ssp"
-        android:textColor="@color/Red"
-        android:drawableLeft="@android:drawable/ic_menu_info_details"
         android:text="@string/no_data_found"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></TextView>
+        android:textColor="@color/Red"
+        android:visibility="gone"></TextView>
 
 </FrameLayout>

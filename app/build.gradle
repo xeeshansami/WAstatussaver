@@ -17,9 +17,9 @@ android {
         applicationId "com.paxees.statussaver.forwaapp"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 4
-        versionName "1.4"
-
+        versionCode 5
+        versionName "1.5"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -50,6 +50,9 @@ dependencies {
     implementation(project(path: ':mkLoaderView')) {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
+    implementation 'com.android.support:multidex:1.0.3'
+
+
     /*dimen*/
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
     implementation('com.stripe:stripe-android:8.1.0') {
@@ -57,4 +60,7 @@ dependencies {
         implementation 'com.nabinbhandari.android:permissions:3.7'
     }
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
+    /*google ads*/
+    implementation 'com.google.android.gms:play-services-ads:19.4.0'
 }

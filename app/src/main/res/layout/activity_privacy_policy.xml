@@ -22,16 +22,25 @@
             android:layout_gravity="center_vertical|center"
             android:background="@color/dimBlackColorBg"
             android:gravity="center_vertical|center"></androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/bannerID"></com.google.android.gms.ads.AdView>
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
-        android:scrollbars="vertical"
-        android:scrollbarThumbVertical="@android:color/darker_gray"
-        android:scrollbarSize="@dimen/_1ssp"
-        android:scrollIndicators="right"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appbar">
+        android:layout_below="@+id/appbar"
+        android:scrollIndicators="right"
+        android:scrollbarSize="@dimen/_1ssp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -60,11 +69,11 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_centerHorizontal="true"
                 android:id="@+id/privacyPolicyImgID"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_below="@+id/privacyPolicyHeederID"
+                android:layout_centerHorizontal="true"
                 android:layout_margin="@dimen/_20ssp"
                 android:scaleType="fitXY"
                 android:src="@drawable/privacy_policy_icon"></ImageView>

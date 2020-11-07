@@ -6,8 +6,6 @@
     android:background="@android:color/transparent"
     android:orientation="vertical">
 
-
-
     <ImageView
         android:layout_centerInParent="true"
         android:src="@drawable/gradiant_bg"
@@ -23,6 +21,7 @@
         android:layout_height="@dimen/_100ssp"
         android:scaleType="fitXY" />
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -54,5 +53,12 @@
         </LinearLayout>
 
     </LinearLayout>
-
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_below="@+id/layout"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/bannerID"></com.google.android.gms.ads.AdView>
 </RelativeLayout>

@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageView
-        android:rotation="180"
-        android:background="@drawable/black_them"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ImageView>
+        android:layout_height="match_parent"
+        android:background="@drawable/black_them"
+        android:rotation="180"></ImageView>
+
     <RelativeLayout
-        android:background="@color/colorPrimaryDark"
+        android:id="@+id/mainlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,14 +25,25 @@
             android:id="@+id/videoView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:scaleType="fitXY"></VideoView>
+            ></VideoView>
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:scaleType="fitXY"></ImageView>
+            ></ImageView>
+
     </RelativeLayout>
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/bannerID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainlayout"></com.google.android.gms.ads.AdView>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/fileSaveBtn"

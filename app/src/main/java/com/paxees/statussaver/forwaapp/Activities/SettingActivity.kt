@@ -18,6 +18,10 @@ import android.widget.CompoundButton
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 import com.nabinbhandari.android.permissions.PermissionHandler
 import com.nabinbhandari.android.permissions.Permissions
 import com.paxees.statussaver.forwaapp.R
@@ -30,6 +34,7 @@ import java.util.*
 
 
 class SettingActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var mInterstitialAd: InterstitialAd
     var permissions = arrayOf(Manifest.permission.CALL_PHONE)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +42,7 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
         settingBackBtn.setOnClickListener(View.OnClickListener {
             finish()
         })
+        ads()
         privacyPolicyBtnID.setOnClickListener(this)
         termsOfUseBtnID.setOnClickListener(this)
         helpBtnID.setOnClickListener(this)
@@ -59,7 +65,13 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
             }
         })
     }
-
+    fun ads() {
+        var mAdView: AdView? = null
+        MobileAds.initialize(this) {}
+        mAdView = findViewById(R.id.adView)
+        var adRequest = AdRequest.Builder().build()
+        mAdView?.loadAd(adRequest)
+    }
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.privacyPolicyBtnID -> {

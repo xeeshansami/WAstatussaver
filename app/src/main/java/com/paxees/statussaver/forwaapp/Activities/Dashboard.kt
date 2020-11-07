@@ -6,6 +6,11 @@ import android.view.*
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.doubleclick.PublisherAdView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.paxees.statussaver.forwaapp.Adapter.ViewPagerAdapter
 import com.paxees.statussaver.forwaapp.R
@@ -21,9 +26,16 @@ class Dashboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         init()
+        ads()
         viewPager()
     }
-
+    fun ads() {
+        var mAdView: AdView? = null
+        MobileAds.initialize(this) {}
+        mAdView = findViewById(R.id.adView)
+        var adRequest = AdRequest.Builder().build()
+        mAdView?.loadAd(adRequest)
+    }
     fun init() {
         toolbar.setTitle("Status Saver")
         setSupportActionBar(toolbar)

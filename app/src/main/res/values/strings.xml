@@ -230,4 +230,12 @@ If you have any questions or suggestions about our Terms and Conditions, do not 
     <string name="supportEmailAddressValueStr">support.paxees@gmail.com</string>
     <string name="ratingStr">Rating &amp; Review</string>
     <string name="paxeesTechStr">Paxees Technologies Inc.</string>
+    <!--DummyAds-->
+<!--    <string name="appID">ca-app-pub-3940256099942544~3347511713</string>-->
+<!--    <string name="bannerID">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="intersitialID">ca-app-pub-3940256099942544/1033173712</string>-->
+<!--RunningAds-->
+    <string name="appID">ca-app-pub-7725725304227392~8822163186</string>
+    <string name="bannerID">ca-app-pub-7725725304227392/1745618942</string>
+    <string name="intersitialID">ca-app-pub-7725725304227392/1868590642</string>
 </resources>

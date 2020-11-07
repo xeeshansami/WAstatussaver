@@ -11,6 +11,10 @@ import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 import com.nabinbhandari.android.permissions.PermissionHandler
 import com.nabinbhandari.android.permissions.Permissions
 import com.paxees.statussaver.forwaapp.R
@@ -23,9 +27,11 @@ import java.util.*
 
 class HelpActivity : AppCompatActivity(), View.OnClickListener {
     var permissions = arrayOf(Manifest.permission.CALL_PHONE)
+    private lateinit var mInterstitialAd: InterstitialAd
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help)
+        ads()
         helpBackBtn.setOnClickListener(View.OnClickListener {
             finish()
         })
@@ -36,6 +42,17 @@ class HelpActivity : AppCompatActivity(), View.OnClickListener {
         ratingAndReviewID.setOnClickListener(this)
     }
 
+    fun ads() {
+        var mAdView: AdView? = null
+        MobileAds.initialize(this) {}
+        mAdView = findViewById(R.id.adView)
+        var adRequest = AdRequest.Builder().build()
+        mAdView?.loadAd(adRequest)
+        /*Intersitial*/
+        mInterstitialAd = InterstitialAd(this@HelpActivity)
+        mInterstitialAd.adUnitId =resources!!.getString(R.string.intersitialID)
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
+    }
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.callNumberID -> {

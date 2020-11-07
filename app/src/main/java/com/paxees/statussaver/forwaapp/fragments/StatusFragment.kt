@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.res.AssetManager
 import android.os.Bundle
 import android.os.Environment
 import android.view.*
@@ -32,7 +33,10 @@ class StatusFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_status, container, false)
     }
-
+    companion object {
+        val wAAPNormalFolder = "WhatsApp/Media/.Statuses"
+        val wAPPBusinessFolder = "WhatsApp Business/Media/.Statuses"
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
@@ -41,7 +45,6 @@ class StatusFragment : Fragment() {
     fun init() {
         LocalBroadcastManager.getInstance((activity as Dashboard).getApplicationContext())
             .registerReceiver(broadcastReceiver, IntentFilter(Constant.SAVE_STATUS_INTENT))
-
         val layoutManager = GridLayoutManager(activity, 1)
         status_rv.setLayoutManager(layoutManager)
         if (getFilePaths()!!.size == 0) {
@@ -74,33 +77,31 @@ class StatusFragment : Fragment() {
 
     fun getFilePaths(): ArrayList<StatusData> {
         val resultIAV: ArrayList<StatusData> = ArrayList<StatusData>()
-        val wAAPNormalFolder =
-            File(Environment.getExternalStorageDirectory().absolutePath + "/WhatsApp/Media/.Statuses")
-        val wAPPBusinessFolder =
-            File(Environment.getExternalStorageDirectory().absolutePath + "/WhatsApp Business/Media/.Statuses")
-
-
-        if (wAAPNormalFolder.exists() && wAPPBusinessFolder.exists()) {
+        val dir = Environment.getExternalStorageDirectory().toString() + File.separator + wAAPNormalFolder
+        val dir2 = Environment.getExternalStorageDirectory().toString() + File.separator + wAPPBusinessFolder
+        var file = File(dir)
+        var file2 = File(dir2)
+        if (file.exists() && file2.exists()) {
             try {
 //                For Normal WAAAP
-                val allFilesOfWAAPPNormalFolder = wAAPNormalFolder.listFiles { dir, name ->
-                    (name.endsWith(".mp4")
-                            || name.endsWith(".3gp")
-                            || name.endsWith(".jpeg")
-                            || name.endsWith(".jpg")
-                            || name.endsWith(".png")
-                            || name.endsWith(".mpeg"))
+                var allFilesOfWAAPPNormalFolder = file.listFiles { dir, name ->
+                    (name.endsWith("mp4")
+                            || name.endsWith("3gp")
+                            || name.endsWith("jpeg")
+                            || name.endsWith("jpg")
+                            || name.endsWith("png")
+                            || name.endsWith("mpeg"))
                 }
                 for (imagePath in allFilesOfWAAPPNormalFolder) {
-                    val path = StatusData()
+                    var path = StatusData()
                     path.media = (imagePath.absolutePath)
                     path.filename = (imagePath.name)
                     resultIAV.add(path)
                 }
 
 //                For Business WAAAP
-                val allFilesWAAPPBusinessFolder =
-                    wAPPBusinessFolder.listFiles { dir, name ->
+                var allFilesWAAPPBusinessFolder =
+                    file2.listFiles { dir, name ->
                         (name.endsWith(".mp4")
                                 || name.endsWith(".3gp")
                                 || name.endsWith(".jpeg")
@@ -109,7 +110,7 @@ class StatusFragment : Fragment() {
                                 || name.endsWith(".mpeg"))
                     }
                 for (imagePath in allFilesWAAPPBusinessFolder) {
-                    val path = StatusData()
+                    var path = StatusData()
                     path.media = (imagePath.absolutePath)
                     path.filename = (imagePath.name)
                     resultIAV.add(path)
@@ -117,10 +118,10 @@ class StatusFragment : Fragment() {
             } catch (e: NullPointerException) {
             }
         } else {
-            if (wAAPNormalFolder.exists()) {
+            if (file.exists()) {
                 try {
-                    val allFiles =
-                        wAAPNormalFolder.listFiles { dir, name ->
+                    var allFiles =
+                        file.listFiles { dir, name ->
                             (name.endsWith(".mp4")
                                     || name.endsWith(".3gp")
                                     || name.endsWith(".jpeg")
@@ -129,7 +130,7 @@ class StatusFragment : Fragment() {
                                     || name.endsWith(".mpeg"))
                         }
                     for (imagePath in allFiles) {
-                        val path = StatusData()
+                        var path = StatusData()
                         path.media = (imagePath.absolutePath)
                         path.filename = (imagePath.name)
                         resultIAV.add(path)
@@ -138,8 +139,8 @@ class StatusFragment : Fragment() {
                 }
             } else {
                 try {
-                    val allFiles =
-                        wAPPBusinessFolder.listFiles { dir, name ->
+                    var allFiles =
+                        file2.listFiles { dir, name ->
                             (name.endsWith(".mp4")
                                     || name.endsWith(".3gp")
                                     || name.endsWith(".jpeg")
@@ -148,7 +149,7 @@ class StatusFragment : Fragment() {
                                     || name.endsWith(".mpeg"))
                         }
                     for (imagePath in allFiles) {
-                        val path = StatusData()
+                        var path = StatusData()
                         path.media = (imagePath.absolutePath)
                         path.filename = (imagePath.name)
                         resultIAV.add(path)
@@ -190,6 +191,35 @@ class StatusFragment : Fragment() {
         }
     }
 
+  /*  fun getFilePaths(): ArrayList<StatusData> {
+        val list: ArrayList<StatusData> = ArrayList<StatusData>()
+        val dir = Environment.getExternalStorageDirectory().toString() + File.separator + wAAPNormalFolder
+        var file = File(dir)
+        val listFile = file.listFiles()
+        *//*if (listFile != null && listFile.isNullOrEmpty()) {
+            Arrays.sort(listFile, LastModifiedFileComparator.LASTMODIFIED_REVERSE)
+        }*//*
+        if (listFile != null) {
+            for (imgFile in listFile) {
+                if (
+                    imgFile.name.endsWith(".jpg")
+                    || imgFile.name.endsWith(".jpeg")
+                    || imgFile.name.endsWith(".png")
+                ) {
+                    val model : String = imgFile.absolutePath
+                    var path = StatusData()
+                    path.media = (model)
+                    val filename = model.substring(model.lastIndexOf("/") + 1)
+                    path.filename = (filename)
+                    list.add(path)
+                }
+            }
+        }
+
+        // return imgPath List
+        return list
+    }
+*/
     private val mActionModeCallback: ActionMode.Callback = object : ActionMode.Callback {
         override fun onCreateActionMode(
             mode: ActionMode,
