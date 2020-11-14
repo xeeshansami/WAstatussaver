@@ -21,9 +21,9 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/appID"/>
-        <meta-data
+  <!--      <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
-            android:value="true"/>
+            android:value="true"/>-->
         <activity android:name="com.paxees.statussaver.forwaapp.Activities.SplashScreen"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
             <intent-filter>
