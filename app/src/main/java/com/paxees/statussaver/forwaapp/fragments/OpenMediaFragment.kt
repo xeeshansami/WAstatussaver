@@ -215,7 +215,7 @@ class OpenMediaFragment : Fragment() {
     @Keep
     fun saveeFile(bmp: Bitmap?, path: String?) {
         var path = path
-        val bMap = ThumbnailUtils.createVideoThumbnail(path, MediaStore.Video.Thumbnails.MICRO_KIND)
+        val bMap = ThumbnailUtils.createVideoThumbnail(path!!, MediaStore.Video.Thumbnails.MICRO_KIND)
         path = path?.substring(path?.lastIndexOf("/") + 1, path.length - 4)
         val Foldername = "Pax-StatusSaver"
         var dir = File(Environment.getExternalStorageDirectory().toString() ,Foldername)

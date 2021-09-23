@@ -33,10 +33,14 @@ class StatusFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_status, container, false)
     }
+
     companion object {
         val wAAPNormalFolder = "WhatsApp/Media/.Statuses"
         val wAPPBusinessFolder = "WhatsApp Business/Media/.Statuses"
+        val wAAPNormalFolder2 = "Android/media/com.whatsapp/WhatsApp/Media/.Statuses"
+        val wAPPBusinessFolder2 = "Android/media/com.whatsapp.w4b/Whatsapp Business/Media/.Statuses"
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
@@ -73,93 +77,98 @@ class StatusFragment : Fragment() {
         val intent = Intent(Constant.SAVE_STATUS_INTENT)
         LocalBroadcastManager.getInstance((activity as Dashboard).getApplicationContext())
             .sendBroadcast(intent)
+        getFilePaths()
     }
 
     fun getFilePaths(): ArrayList<StatusData> {
         val resultIAV: ArrayList<StatusData> = ArrayList<StatusData>()
-        val dir = Environment.getExternalStorageDirectory().toString() + File.separator + wAAPNormalFolder
-        val dir2 = Environment.getExternalStorageDirectory().toString() + File.separator + wAPPBusinessFolder
-        var file = File(dir)
-        var file2 = File(dir2)
-        if (file.exists() && file2.exists()) {
-            try {
-//                For Normal WAAAP
-                var allFilesOfWAAPPNormalFolder = file.listFiles { dir, name ->
-                    (name.endsWith("mp4")
-                            || name.endsWith("3gp")
-                            || name.endsWith("jpeg")
-                            || name.endsWith("jpg")
-                            || name.endsWith("png")
-                            || name.endsWith("mpeg"))
-                }
-                for (imagePath in allFilesOfWAAPPNormalFolder) {
-                    var path = StatusData()
-                    path.media = (imagePath.absolutePath)
-                    path.filename = (imagePath.name)
-                    resultIAV.add(path)
+        val whatsaAppNormalDir =
+            Environment.getExternalStorageDirectory().toString() + File.separator + wAAPNormalFolder
+        val whatsaAppNormalDir2 =
+            Environment.getExternalStorageDirectory()
+                .toString() + File.separator + wAAPNormalFolder2
+        val whatsAppBusiness1 = Environment.getExternalStorageDirectory()
+            .toString() + File.separator + wAPPBusinessFolder
+        val whatsAppBusiness2 = Environment.getExternalStorageDirectory()
+            .toString() + File.separator + wAPPBusinessFolder2
+        var whatsAppnormalFile = File(whatsaAppNormalDir)
+        var whatsAppnormalFile2 = File(whatsaAppNormalDir2)
+        var whatsAppBusinessFile = File(whatsAppBusiness1)
+        var whatsAppBusinessFile2 = File(whatsAppBusiness2)
+        if (whatsAppnormalFile.exists()) {
+            //For Normal Whatsapp normal path
+            var files = whatsAppnormalFile.listFiles { dir, name ->
+                (name.endsWith("mp4")
+                        || name.endsWith("3gp")
+                        || name.endsWith("jpeg")
+                        || name.endsWith("jpg")
+                        || name.endsWith("png")
+                        || name.endsWith("mpeg"))
+            }
+            for (imagePath in files) {
+                var path = StatusData()
+                path.media = (imagePath.absolutePath)
+                path.filename = ("Whatsapp Status-")
+                resultIAV.add(path)
+            }
+        }
+        if (whatsAppnormalFile2.exists()) {
+            //For Normal Whatsapp normal other path
+            var files = whatsAppnormalFile2.listFiles { dir, name ->
+                (name.endsWith("mp4")
+                        || name.endsWith("3gp")
+                        || name.endsWith("jpeg")
+                        || name.endsWith("jpg")
+                        || name.endsWith("png")
+                        || name.endsWith("mpeg"))
+            }
+            for (imagePath in files) {
+                var path = StatusData()
+                path.media = (imagePath.absolutePath)
+                path.filename = ("Whatsapp Status-")
+                resultIAV.add(path)
+            }
+        }
+        if (whatsAppBusinessFile.exists()) {
+            //For Business WAAAP normal path
+            var files =
+                whatsAppBusinessFile.listFiles { dir, name ->
+                    (name.endsWith(".mp4")
+                            || name.endsWith(".3gp")
+                            || name.endsWith(".jpeg")
+                            || name.endsWith(".jpg")
+                            || name.endsWith(".png")
+                            || name.endsWith(".mpeg"))
                 }
 
-//                For Business WAAAP
-                var allFilesWAAPPBusinessFolder =
-                    file2.listFiles { dir, name ->
-                        (name.endsWith(".mp4")
-                                || name.endsWith(".3gp")
-                                || name.endsWith(".jpeg")
-                                || name.endsWith(".jpg")
-                                || name.endsWith(".png")
-                                || name.endsWith(".mpeg"))
-                    }
-                for (imagePath in allFilesWAAPPBusinessFolder) {
-                    var path = StatusData()
-                    path.media = (imagePath.absolutePath)
-                    path.filename = (imagePath.name)
-                    resultIAV.add(path)
-                }
-            } catch (e: NullPointerException) {
+            for (imagePath in files) {
+                var path = StatusData()
+                path.media = (imagePath.absolutePath)
+                path.filename = ("Whatsapp Business Status-")
+                resultIAV.add(path)
             }
-        } else {
-            if (file.exists()) {
-                try {
-                    var allFiles =
-                        file.listFiles { dir, name ->
-                            (name.endsWith(".mp4")
-                                    || name.endsWith(".3gp")
-                                    || name.endsWith(".jpeg")
-                                    || name.endsWith(".jpg")
-                                    || name.endsWith(".png")
-                                    || name.endsWith(".mpeg"))
-                        }
-                    for (imagePath in allFiles) {
-                        var path = StatusData()
-                        path.media = (imagePath.absolutePath)
-                        path.filename = (imagePath.name)
-                        resultIAV.add(path)
-                    }
-                } catch (e: NullPointerException) {
+        }
+        if (whatsAppBusinessFile2.exists()) {
+            //For Business WAAAP other path
+            var files =
+                whatsAppBusinessFile2.listFiles { dir, name ->
+                    (name.endsWith(".mp4")
+                            || name.endsWith(".3gp")
+                            || name.endsWith(".jpeg")
+                            || name.endsWith(".jpg")
+                            || name.endsWith(".png")
+                            || name.endsWith(".mpeg"))
                 }
-            } else {
-                try {
-                    var allFiles =
-                        file2.listFiles { dir, name ->
-                            (name.endsWith(".mp4")
-                                    || name.endsWith(".3gp")
-                                    || name.endsWith(".jpeg")
-                                    || name.endsWith(".jpg")
-                                    || name.endsWith(".png")
-                                    || name.endsWith(".mpeg"))
-                        }
-                    for (imagePath in allFiles) {
-                        var path = StatusData()
-                        path.media = (imagePath.absolutePath)
-                        path.filename = (imagePath.name)
-                        resultIAV.add(path)
-                    }
-                } catch (e: NullPointerException) {
-                }
+            for (imagePath in files) {
+                var path = StatusData()
+                path.media = (imagePath.absolutePath)
+                path.filename = ("Whatsapp Business Status-")
+                resultIAV.add(path)
             }
         }
         return resultIAV
     }
+
 
     var broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -191,12 +200,12 @@ class StatusFragment : Fragment() {
         }
     }
 
-  /*  fun getFilePaths(): ArrayList<StatusData> {
-        val list: ArrayList<StatusData> = ArrayList<StatusData>()
-        val dir = Environment.getExternalStorageDirectory().toString() + File.separator + wAAPNormalFolder
-        var file = File(dir)
-        val listFile = file.listFiles()
-        *//*if (listFile != null && listFile.isNullOrEmpty()) {
+    /*  fun getFilePaths(): ArrayList<StatusData> {
+          val list: ArrayList<StatusData> = ArrayList<StatusData>()
+          val dir = Environment.getExternalStorageDirectory().toString() + File.separator + wAAPNormalFolder
+          var file = File(dir)
+          val listFile = file.listFiles()
+          *//*if (listFile != null && listFile.isNullOrEmpty()) {
             Arrays.sort(listFile, LastModifiedFileComparator.LASTMODIFIED_REVERSE)
         }*//*
         if (listFile != null) {

@@ -56,7 +56,6 @@ class RecyclerViewAdapter(
     @SuppressLint("WrongConstant")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var mediaFIle = items.get(position).media
-        holder?.title_ss_tv?.text = items.get(position).filename
         holder?.fileSize?.text = Utils.getFileSize(File(mediaFIle).length())
         holder?.fileDate?.text = Utils.getDate(File(mediaFIle).lastModified())
         mediaFIle?.let {
@@ -64,8 +63,10 @@ class RecyclerViewAdapter(
         }
         Glide.with(context).load("file://" + mediaFIle).into(holder?.thumnails_img)
         if (mediaFIle!!.endsWith(".jpg") || mediaFIle.endsWith(".jpeg") || mediaFIle.endsWith(".png")) {
+            holder?.title_ss_tv?.text = items.get(position).filename+"Image"
             holder?.mediaTypeImg.setImageResource(R.drawable.ic_photo_black_24dp)
         } else {
+            holder?.title_ss_tv?.text = items.get(position).filename+"Video"
             holder?.mediaTypeImg.setImageResource(R.drawable.ic_video_library_black_24dp)
         }
         holder?.itemView.setOnClickListener(View.OnClickListener {
